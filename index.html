@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Masterclass — Java Interview Preparation by Navaneethan P</title>
+    <meta name="description" content="Complete DSA Interview Preparation — 150 problems with Java solutions, step-by-step workflows, and active recall Q&A.">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Security Tamper Lock Overlay -->
+    <div class="tamper-lock-overlay" id="tamper-lock-screen">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--hard)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <h1>Security Violation</h1>
+        <p>This application has been locked. Copyright markers were modified.</p>
+    </div>
+
+    <div class="app-container">
+        <!-- ========== SIDEBAR ========== -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <div class="logo-text">
+                        <h1>DSA Masterclass</h1>
+                        <p>Java — Top Interview 150</p>
+                    </div>
+                </div>
+
+                <!-- Progress Ring -->
+                <div class="progress-card">
+                    <div class="progress-circle-container">
+                        <svg width="60" height="60" viewBox="0 0 60 60">
+                            <circle class="progress-circle-bg" cx="30" cy="30" r="26"/>
+                            <circle id="progress-circle-meter" class="progress-circle-bar" cx="30" cy="30" r="26" stroke-dasharray="163.36" stroke-dashoffset="163.36"/>
+                        </svg>
+                        <div class="progress-text-center" id="progress-percent-label">0%</div>
+                    </div>
+                    <div class="progress-info">
+                        <h3>Progress</h3>
+                        <p id="progress-fraction">0 / 0 Solved</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search -->
+            <div class="sidebar-search">
+                <div class="search-input-wrapper">
+                    <span class="search-icon">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </span>
+                    <input type="text" id="sidebar-search-input" placeholder="Search problems, topics...">
+                </div>
+            </div>
+
+            <!-- Topic Filter Chips -->
+            <div class="topic-filter-bar" id="topic-filter-bar">
+                <button class="topic-chip active" data-filter="all">All</button>
+                <button class="topic-chip" data-filter="Array / String">Arrays</button>
+                <button class="topic-chip" data-filter="Two Pointers">Two Pointers</button>
+                <button class="topic-chip" data-filter="Sliding Window">Sliding Window</button>
+                <button class="topic-chip" data-filter="HashMap / HashSet">HashMap</button>
+                <button class="topic-chip" data-filter="Linked List">Linked List</button>
+                <button class="topic-chip" data-filter="Stack">Stack</button>
+                <button class="topic-chip" data-filter="Queue">Queue</button>
+                <button class="topic-chip" data-filter="Binary Tree">Binary Tree</button>
+                <button class="topic-chip" data-filter="Binary Search Tree">BST</button>
+                <button class="topic-chip" data-filter="Binary Search">Binary Search</button>
+                <button class="topic-chip" data-filter="Dynamic Programming">DP</button>
+                <button class="topic-chip" data-filter="Graph / BFS / DFS">Graphs</button>
+                <button class="topic-chip" data-filter="Heap / Priority Queue">Heap</button>
+                <button class="topic-chip" data-filter="Backtracking">Backtracking</button>
+                <button class="topic-chip" data-filter="Trie">Trie</button>
+                <button class="topic-chip" data-filter="Greedy">Greedy</button>
+                <button class="topic-chip" data-filter="Bit Manipulation">Bit Ops</button>
+                <button class="topic-chip" data-filter="Math">Math</button>
+            </div>
+
+            <!-- Problem List -->
+            <div class="sidebar-list" id="sidebar-problems-list">
+                <div style="text-align:center;padding:40px;color:var(--text-muted);">Loading problems...</div>
+            </div>
+        </aside>
+
+        <!-- ========== MAIN CONTENT ========== -->
+        <main class="main-content">
+            <!-- Problem Header -->
+            <header class="main-header">
+                <div class="problem-title-area">
+                    <h2 id="header-problem-title">Select a problem to begin</h2>
+                    <div class="problem-meta">
+                        <span class="meta-pill" id="header-meta-category">Category</span>
+                        <span class="meta-pill" id="header-meta-complexity">Complexity</span>
+                        <div style="display:flex;gap:8px;" id="header-practice-links-container">
+                            <a href="#" target="_blank" class="leetcode-btn" id="header-leetcode-link">LeetCode</a>
+                            <a href="#" target="_blank" class="leetcode-btn" id="header-codechef-link" style="border-color:rgba(217,119,6,0.3);color:var(--medium);">CodeChef</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="solved-toggle-btn" id="solved-toggle-btn">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/></svg>
+                        Mark as Solved
+                    </button>
+                </div>
+            </header>
+
+            <!-- Tabs -->
+            <nav class="tabs-bar">
+                <button class="tab-button active" data-tab="overview">Overview</button>
+                <button class="tab-button" data-tab="code">Java Solution</button>
+                <button class="tab-button" data-tab="workflow">Algorithm Walkthrough</button>
+                <button class="tab-button" data-tab="tips">Interview Q&amp;A</button>
+            </nav>
+
+            <!-- Tab Contents -->
+            <section class="workspace-area">
+
+                <!-- 1. OVERVIEW TAB -->
+                <div class="tab-content active" id="overview-tab-content">
+                    <div class="card" style="margin-bottom: 20px;">
+                        <h3>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            Problem Description
+                        </h3>
+                        <div class="problem-description-box" id="problem-description"></div>
+                    </div>
+
+                    <div class="card" id="array-visualizer-card" style="display:none;">
+                        <h3>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--medium);"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+                            Interactive Array Visualizer
+                        </h3>
+                        <p style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:16px;">Watch the algorithm in action step-by-step.</p>
+                        
+                        <div id="array-visualizer-container" style="display:flex; gap: 8px; margin: 30px 0 50px; align-items:flex-end; height: 60px; position:relative;">
+                            <!-- boxes injected via JS -->
+                        </div>
+                        
+                        <div style="display:flex; gap: 8px; align-items:center;">
+                            <button id="vis-play-btn" class="lang-btn" style="background:var(--primary);color:#fff;">Play</button>
+                            <button id="vis-reset-btn" class="lang-btn">Reset</button>
+                            <span id="vis-status-text" style="font-size:0.8rem;color:var(--text-muted);margin-left:10px;">Ready</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. CODE TAB -->
+                <div class="tab-content" id="code-tab-content">
+                    <div class="card" style="margin-bottom:20px;border-left:4px solid var(--primary-light);background:rgba(14,165,233,0.03);transform:none;">
+                        <h4 style="font-size:0.9rem;font-weight:700;color:var(--primary);margin-bottom:6px;">Optimization Path — Brute Force to Optimal</h4>
+                        <p id="optimization-path-text" style="font-size:0.85rem;color:var(--text-secondary);line-height:1.6;"></p>
+                    </div>
+
+
+                    <div class="code-split-grid">
+                        <!-- Brute Force -->
+                        <div class="code-container-wrapper">
+                            <div class="code-header">
+                                <div class="code-title" style="color:var(--hard);">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                    BRUTE_FORCE.java
+                                </div>
+                                <div style="display:flex;align-items:center;gap:8px;">
+                                    <span class="difficulty-badge hard" id="brute-complexity-badge">O(N²)</span>
+                                    <button class="code-copy-btn" id="copy-brute-code-btn">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                            <pre class="code-block"><code id="brute-code-display-block"></code></pre>
+                        </div>
+
+                        <!-- Optimal -->
+                        <div class="code-container-wrapper">
+                            <div class="code-header">
+                                <div class="code-title" style="color:var(--easy);">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><polyline points="20 6 9 17 4 12"/></svg>
+                                    OPTIMAL_SOLUTION.java
+                                </div>
+                                <div style="display:flex;align-items:center;gap:8px;">
+                                    <span class="difficulty-badge easy" id="optimal-complexity-badge">O(N)</span>
+                                    <button class="code-copy-btn" id="copy-code-btn">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                            <pre class="code-block"><code id="code-display-block"></code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. WORKFLOW TAB -->
+                <div class="tab-content" id="workflow-tab-content">
+                    <div class="card" style="transform:none;">
+                        <h3>Step-by-Step Algorithm Walkthrough</h3>
+                        <p style="color:var(--text-secondary);margin-bottom:24px;font-size:0.9rem;">Follow the exact thought process and data transitions for the optimal solution.</p>
+                        <div id="workflow-steps-list"></div>
+                    </div>
+                </div>
+
+                <!-- 4. TIPS / Q&A TAB -->
+                <div class="tab-content" id="tips-tab-content">
+                    <div class="tips-grid">
+                        <div class="tips-left-column" style="display:flex;flex-direction:column;gap:24px;">
+                            <div class="complexity-card">
+                                <h3>Complexity Analysis</h3>
+                                <div class="complexity-row">
+                                    <span class="complexity-label">Time Complexity</span>
+                                    <span class="complexity-value" id="complexity-time-val">O(N)</span>
+                                </div>
+                                <div class="complexity-row">
+                                    <span class="complexity-label">Space Complexity</span>
+                                    <span class="complexity-value" id="complexity-space-val">O(1)</span>
+                                </div>
+                                <p style="margin-top:16px;font-size:0.82rem;color:var(--text-muted);line-height:1.5;">Auxiliary space excludes output array allocations required by the problem itself.</p>
+                            </div>
+                            <div class="card">
+                                <h3>High-Yield Key Points</h3>
+                                <div class="tips-list" id="tips-interactive-list"></div>
+                            </div>
+                        </div>
+
+                        <!-- Active Recall Q&A -->
+                        <div class="card recall-card" style="display:flex;flex-direction:column;">
+                            <h3 style="display:flex;align-items:center;justify-content:space-between;width:100%;">
+                                <span style="display:flex;align-items:center;gap:10px;">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                    Interview Q&amp;A — Active Recall
+                                </span>
+                                <span id="recall-category-title" style="font-size:0.72rem;background:var(--primary-glow);color:var(--primary);padding:4px 10px;border-radius:12px;border:1px solid rgba(14,165,233,0.2);">Topic</span>
+                            </h3>
+                            <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:20px;">Click any card to reveal the answer. Practice recalling before revealing.</p>
+                            <div id="recall-flashcards-list" style="display:flex;flex-direction:column;gap:14px;flex:1;overflow-y:auto;max-height:520px;padding-right:4px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer-secure">
+                <span id="footer-problem-count"></span>
+                <span>
+                    <span id="developer-identity-copyright">Copyright &copy; 2026 
+                        <a id="developer-identity-linkedin" href="https://linkedin.com/in/navaneethan-p" target="_blank" style="color:var(--primary);font-weight:600;text-decoration:none;">
+                            <span id="developer-identity-name">Navaneethan P</span>
+                        </a>. All Rights Reserved.
+                    </span>
+                </span>
+                <span id="developer-signature" style="display:none;">Navaneethan P</span>
+            </footer>
+        </main>
+    </div>
+
+    <script src="problems-data.js?v=3.0"></script>
+    <script src="app.js?v=3.0"></script>
+</body>
+</html>
