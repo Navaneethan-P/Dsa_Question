@@ -1,4 +1,4 @@
-// LeetCode Java Prep Dashboard Controller (Light Sky-Blue & 3D edition)
+// Java DSA Prep Dashboard Controller (Light Sky-Blue & 3D edition)
 
 // --- STATE MANAGEMENT ---
 let state = {

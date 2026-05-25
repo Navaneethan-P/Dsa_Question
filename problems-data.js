@@ -1,4 +1,4 @@
-// LeetCode Top Interview Problems Data (Complete Secure Edition)
+// Top Interview Problems Data (Complete Secure Edition)
 const TOP_150_PROBLEMS = [
   {
     "id": "merge-sorted-array",
