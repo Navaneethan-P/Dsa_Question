@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateGlobalProgress();
     
     // Deploy Secure FOOTER footprint signature with self-healing guards
-    deployAuthorSignature();
+    // Removed tamper lock
 
     // Auto-Hide Hover / Slide Sidebar
     document.addEventListener("mousemove", (e) => {
@@ -1299,5 +1299,6 @@ function renderTopicRecallQA(category) {
         container.appendChild(card);
     });
 }
+
 
 
